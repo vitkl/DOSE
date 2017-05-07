@@ -8,7 +8,7 @@
 ##' @importFrom ggplot2 ggtitle
 ##' @author Guangchuang Yu, Vitalii Kleshchevnikov modified to order and color by any column and give custom message
 ##' on the plot terms are ordered high to low, top to bottom
-dotplot_internal <- function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="") {
+dotplot_internal <- function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="", xlabel = "") {
   colorBy <- match.arg(colorBy, c("pvalue", "p.adjust", "qvalue", "enrichmentScore"))
   if (x == "geneRatio" || x == "GeneRatio") {
     x <- "GeneRatio"
@@ -31,9 +31,9 @@ dotplot_internal <- function(object, x="geneRatio", colorBy="p.adjust", orderBy 
     geom_point() + scale_color_gradient(low=lows, high=highs) +
     ggtitle(title) + theme_dose(font.size) + 
     ylab(ifelse(orderBy == "p.adjust",">> adjusted p-value increasing >>", ""))+
-    xlab(ifelse(x == "GeneRatio" & class(object) == "gseaResult",
-                "the fraction of proteins from a gene set which are over- or underrepresented", 
-                ifelse(x == "GeneRatio" & class(object) == "enrichResult",
-                       "the fraction of proteins from a gene set in the analysed set", 
+    xlab(ifelse(x == "GeneRatio" & class(object) == "gseaResult" & xlabel != "",
+                xlabel, # the fraction of proteins from a gene set which are over- or underrepresented
+                ifelse(x == "GeneRatio" & class(object) == "enrichResult" & xlabel != "",
+                       xlabel, # the fraction of proteins from a gene set in the analysed set
                        x)))
 }

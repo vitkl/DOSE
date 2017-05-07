@@ -6,8 +6,8 @@
 ##' @exportMethod dotplot
 ##' @author Guangchuang Yu, Vitalii Kleshchevnikov modified to order and color by any column
 setMethod("dotplot", signature(object="gseaResult"),
-          function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="") {
-            dotplot_internal(object = object, x, colorBy, orderBy, showCategory, split, font.size, title)
+          function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="", xlabel = "") {
+            dotplot_internal(object = object, x, colorBy, orderBy, showCategory, split, font.size, title, xlabel)
           }
 )
 
