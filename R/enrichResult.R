@@ -116,8 +116,8 @@ setMethod("plot", signature(x="enrichResult"),
 ##' @exportMethod dotplot
 ##' @author Guangchuang Yu, Vitalii Kleshchevnikov modified to order and color by any column
 setMethod("dotplot", signature(object="enrichResult"),
-          function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="", xlabel = "") {
-            dotplot_internal(object, x, colorBy, orderBy, showCategory, split, font.size, title, xlabel)
+          function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="", xlabel = "", title_hjust = 0) {
+            dotplot_internal(object, x, colorBy, orderBy, showCategory, split, font.size, title, xlabel, title_hjust)
           }
 )
 
