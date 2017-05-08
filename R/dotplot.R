@@ -35,6 +35,5 @@ dotplot_internal <- function(object, x="geneRatio", colorBy="p.adjust", orderBy 
                 xlabel, # the fraction of proteins from a gene set which are over- or underrepresented
                 ifelse(x == "GeneRatio" & class(object) == "enrichResult" & xlabel != "",
                        xlabel, # the fraction of proteins from a gene set in the analysed set
-                       x)))+   
-    theme(plot.title = element_text(hjust = -0.2))
+                       x)))
 }
