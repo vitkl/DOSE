@@ -8,7 +8,7 @@
 ##' @importFrom ggplot2 ggtitle
 ##' @author Guangchuang Yu, Vitalii Kleshchevnikov modified to order and color by any column and give custom message
 ##' on the plot terms are ordered high to low, top to bottom
-dotplot_internal <- function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="", xlabel = "", title_hjust = 0) {
+dotplot_internal <- function(object, x="geneRatio", colorBy="p.adjust", orderBy = "GeneRatio", showCategory=10, split=NULL, font.size=12, title="", xlabel = "") {
   colorBy <- match.arg(colorBy, c("pvalue", "p.adjust", "qvalue", "enrichmentScore"))
   if (x == "geneRatio" || x == "GeneRatio") {
     x <- "GeneRatio"
@@ -36,5 +36,5 @@ dotplot_internal <- function(object, x="geneRatio", colorBy="p.adjust", orderBy 
                 ifelse(x == "GeneRatio" & class(object) == "enrichResult" & xlabel != "",
                        xlabel, # the fraction of proteins from a gene set in the analysed set
                        x)))+   
-    theme(plot.title = element_text(hjust = title_hjust))
+    theme(plot.title = element_text(hjust = -0.2))
 }
